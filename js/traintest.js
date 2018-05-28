@@ -14,6 +14,7 @@ function trainNeural(training) {
       targets[label] = 1;
       neuralNetwork.train(inputs, targets);
    }
+   console.log('Training Finished');
 }
 
 function testAll(testing) {
@@ -45,13 +46,13 @@ function guessDraw(image) {
    const guess = neuralNetwork.predict(inputs);
    const classificationIndex = guess.indexOf(max(guess));
 
-   let draw = "Nothing";
+   let draw = "";
    if (classificationIndex === CAT) {
-      draw = "Cat";
+      draw = "Gato";
    } else if (classificationIndex === RAINBOW) {
-      draw = "Rainbow";
+      draw = "Arcoiris";
    } else if (classificationIndex === TRAIN) {
-      draw = "Train";
+      draw = "Tren";
    }
    return draw;
 }

@@ -19,7 +19,8 @@ function preload() {
 }
 
 function setup() {
-   createCanvas(280, 280);
+   const canvas = createCanvas(280, 280);
+   canvas.parent("draw-board");
    background(255);
    const cats = prepareData(catsData, CAT);
    const rainbows = prepareData(rainbowsData, RAINBOW);
@@ -31,12 +32,12 @@ function setup() {
    const testing = [...cats.testing, ...rainbows.testing, ...trains.testing];
    
    const trainButton = select('#train');
-   trainButton.mousePressed(() => trainNeural(training));
-
-   const testButton = select('#test');
-   testButton.mousePressed(() => {
-      let percent = testAll(testing);
-      console.log("Percent: " + nf(percent, 2, 2) + "%");
+   trainButton.mousePressed(() => {
+      $('#activity-indicator').modal('show');
+      setTimeout(() => {
+         trainNeural(training);
+         $('#activity-indicator').modal('hide');
+      }, 500);
    });
 
    const guessButton = select('#guess');
@@ -46,10 +47,13 @@ function setup() {
       img.resize(28, 28);
       img.loadPixels();
       const classification = guessDraw(img);
-      console.log(classification);
+      $('#draw-result').text('Has dibujado: ' + classification);
    });
 
-   select('#clear').mousePressed(() => background(255));
+   select('#clear').mousePressed(() => {
+      $('#draw-result').text('');
+      background(255);
+   });
 }
 
 function draw() {

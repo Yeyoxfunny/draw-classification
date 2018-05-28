@@ -1,0 +1,18 @@
+#draw-board canvas {
+   display: block;
+   margin: 0 auto;
+   border: 1px solid;
+}
+
+.draw-actions {
+   display: flex;
+   justify-content: center;
+}
+
+.draw-actions button {
+   margin: 0 3px;
+}
+
+#draw-result {
+   font-size: 20px;
+}

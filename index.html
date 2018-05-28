@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <title>Draw Classification</title>
-   
+
+   <link rel="stylesheet" href="styles/style.css">
+   <link rel="stylesheet" href="libraries/bootstrap/bootstrap.min.css">
+   <script src="libraries/bootstrap/jquery.min.js"></script>
+   <script src="libraries/bootstrap/bootstrap.min.js"></script>
+
    <script src="libraries/p5.min.js"></script>
    <script src="libraries/p5.dom.min.js"></script>
    <script src="js/loadbinary.js"></script>
@@ -18,18 +24,39 @@
    <script src="js/normalize-data.js"></script>
    <script src="js/traintest.js"></script>
    <script src="js/main.js"></script>
-
-   <style>
-      body {
-         background-color: #F1ECE9;
-      }
-   </style>
 </head>
+
 <body>
-   <button id="train">Entrenar</button>
-   <button id="test">Probar</button>
-   <button id="guess">Adivinar</button>
-   <button id="clear">Limpiar</button>
-   <br>
+   <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Draw Classification</a>
+   </nav>
+   <div id="draw-board" class="mt-2"></div>
+   <div class="draw-actions mt-3">
+      <button class="btn btn-info" id="train">Entrenar</button>
+      <!--<button id="test">Probar</button>-->
+      <button class="btn btn-primary" id="guess">Adivinar</button>
+      <button class="btn btn-danger" id="clear">Limpiar</button>
+   </div>
+
+   <div id="draw-result" class="text-center mt-2"></div>
+
+   <div id="activity-indicator" class="modal">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title">Entrenando Neurona...</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div class="modal-body">
+               <div class="progress">
+                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
 </body>
+
 </html>
